@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} — 90-Second Intake | Joe's Tech Solutions</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: #12121a;
+      --panel-2: #1a1a24;
+      --border: #2a2a36;
+      --text: #e8e8ec;
+      --muted: #8a8a9a;
+      --accent: #20d6ee;
+      --accent-2: #b06bff;
+      --ok: #4ade80;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "DM Sans", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+    body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .brand-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent);
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .lede {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .time {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(32,214,238,0.12);
+      color: var(--accent);
+      border-radius: 999px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    fieldset {
+      border: 0;
+      padding: 0;
+      margin: 0 0 28px 0;
+    }
+    legend {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: block;
+      width: 100%;
+    }
+    .q-hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .opt-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .opt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .opt:hover {
+      border-color: var(--accent);
+      background: var(--panel-2);
+    }
+    .opt input {
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .opt-label {
+      flex: 1;
+      font-size: 15px;
+    }
+    .opt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 480px) {
+      .opt-grid { grid-template-columns: 1fr; }
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: inherit;
+      font-size: 15px;
+      transition: border-color 0.15s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    textarea:focus {
+      outline: 0;
+      border-color: var(--accent);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+      line-height: 1.5;
+    }
+    .row2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 480px) {
+      .row2 { grid-template-columns: 1fr; }
+    }
+    .submit {
+      display: block;
+      width: 100%;
+      background: var(--accent);
+      color: #0a0a0f;
+      border: 0;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: all 0.15s ease;
+    }
+    .submit:hover {
+      background: #4be5f5;
+      transform: translateY(-1px);
+    }
+    .submit:active {
+      transform: translateY(0);
+    }
+    .footer-note {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+    /* Honeypot for spam */
+    ._hp { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="brand">
+    <span class="brand-dot"></span>
+    Joe's Tech Solutions &middot; {{CLIENT_NAME}} Intake
+  </div>
+
+  <h1>90-Second Intake</h1>
+  <p class="lede">Quick rundown so Joe knows what to set up before the call. Nothing fancy.</p>
+  <span class="time">9 questions &middot; ~90 seconds</span>
+
+  <form action="https://formsubmit.co/joe@joestechsolutions.com" method="POST">
+    <!-- FormSubmit config -->
+    <input type="hidden" name="_subject" value="{{CLIENT_NAME}} — New Intake Submission" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="hidden" name="_captcha" value="true" />
+    <input type="hidden" name="_next" value="/thanks.html" />
+    <!-- Honeypot -->
+    <input type="text" name="_honey" class="_hp" tabindex="-1" autocomplete="off" />
+
+    <!-- Q1: Contact -->
+    <fieldset>
+      <legend>1. Your details</legend>
+      <div class="row2" style="margin-top: 12px;">
+        <input type="text" name="Name" placeholder="Full name" required />
+        <input type="text" name="Business" placeholder="Business name" required />
+      </div>
+      <div class="row2" style="margin-top: 8px;">
+        <input type="email" name="Email" placeholder="Email" required />
+        <input type="tel" name="Phone" placeholder="Phone (optional)" />
+      </div>
+    </fieldset>
+
+    <!-- Q2: Work type -->
+    <fieldset>
+      <legend>2. What kind of work do you do?</legend>
+      <p class="q-hint">Pick the one that fits most days.</p>
+      <div class="opt-list">
+        <label class="opt"><input type="radio" name="Work_Type" value="Residential remodels" required /><span class="opt-label">Residential remodels</span></label>
+        <label class="opt"><input type="radio" name="Work_Type" value="New home builds" /><span class="opt-label">New home builds</span></label>
+        <label class="opt"><input type="radio" name="Work_Type" value="Additions / ADUs" /><span class="opt-label">Additions / ADUs</span></label>
+        <label class="opt"><input type="radio" name="Work_Type" value="Commercial" /><span class="opt-label">Commercial</span></label>
+        <label class="opt"><input type="radio" name="Work_Type" value="Mix of everything" /><span class="opt-label">Mix of everything</span></label>
+      </div>
+    </fieldset>
+
+    <!-- Q3: Crew size -->
+    <fieldset>
+      <legend>3. How big is your crew?</legend>
+      <p class="q-hint">Just you counts as 1.</p>
+      <div class="opt-grid">
+        <label class="opt"><input type="radio" name="Crew_Size" value="Just me" required /><span class="opt-label">Just me</span></label>
+        <label class="opt"><input type="radio" name="Crew_Size" value="2-3" /><span class="opt-label">2&ndash;3</span></label>
+        <label class="opt"><input type="radio" name="Crew_Size" value="4-9" /><span class="opt-label">4&ndash;9</span></label>
+        <label class="opt"><input type="radio" name="Crew_Size" value="10+" /><span class="opt-label">10+</span></label>
+      </div>
+    </fieldset>
+
+    <!-- Q4: Time-eater -->
+    <fieldset>
+      <legend>4. What's the one thing that eats your time?</legend>
+      <p class="q-hint">The thing you do every day that you wish you didn't have to.</p>
+      <textarea name="Time_Eater" placeholder="e.g. chasing client replies, drafting estimates, looking up code questions..." required></textarea>
+    </fieldset>
+
+    <!-- Q5: Lead source -->
+    <fieldset>
+      <legend>5. How do new clients find you?</legend>
+      <p class="q-hint">Check all that apply.</p>
+      <div class="opt-grid">
+        <label class="opt"><input type="checkbox" name="Lead_Source" value="Instagram" /><span class="opt-label">Instagram</span></label>
+        <label class="opt"><input type="checkbox" name="Lead_Source" value="Google" /><span class="opt-label">Google</span></label>
+        <label class="opt"><input type="checkbox" name="Lead_Source" value="Referrals" /><span class="opt-label">Referrals</span></label>
+        <label class="opt"><input type="checkbox" name="Lead_Source" value="Repeat clients" /><span class="opt-label">Repeat clients</span></label>
+        <label class="opt"><input type="checkbox" name="Lead_Source" value="Houzz/Porch" /><span class="opt-label">Houzz / Porch</span></label>
+        <label class="opt"><input type="checkbox" name="Lead_Source" value="Yard signs" /><span class="opt-label">Yard signs</span></label>
+      </div>
+    </fieldset>
+
+    <!-- Q6: Day-to-day tools -->
+    <fieldset>
+      <legend>6. What tools do you actually use day-to-day?</legend>
+      <p class="q-hint">The ones you'd miss if your phone died. Not the ones you open once a month.</p>
+      <div class="opt-grid">
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="Gmail" /><span class="opt-label">Gmail</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="Instagram" /><span class="opt-label">Instagram</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="WhatsApp" /><span class="opt-label">WhatsApp</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="iMessage/text" /><span class="opt-label">iMessage / text</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="Google Calendar" /><span class="opt-label">Google Calendar</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="QuickBooks" /><span class="opt-label">QuickBooks</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="Procore" /><span class="opt-label">Procore</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="Buildertrend" /><span class="opt-label">Buildertrend</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="CoConstruct" /><span class="opt-label">CoConstruct</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="Excel/Sheets" /><span class="opt-label">Excel / Sheets</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="Yard sign service" /><span class="opt-label">Yard sign service</span></label>
+        <label class="opt"><input type="checkbox" name="Tools_Used" value="Other" /><span class="opt-label">Other</span></label>
+      </div>
+    </fieldset>
+
+    <!-- Q7: Magic question - what should AI do first -->
+    <fieldset>
+      <legend>7. If you had a smart helper in your pocket, what's the first thing you'd want it to do?</legend>
+      <p class="q-hint">Pick up to 3.</p>
+      <div class="opt-list">
+        <label class="opt"><input type="checkbox" name="AI_First_Tasks" value="Reply to client texts/DMs" /><span class="opt-label">Reply to client texts / DMs when I'm on a job</span></label>
+        <label class="opt"><input type="checkbox" name="AI_First_Tasks" value="Draft estimates" /><span class="opt-label">Draft rough estimates from a few sentences</span></label>
+        <label class="opt"><input type="checkbox" name="AI_First_Tasks" value="Look up code/permits" /><span class="opt-label">Look up building code and permit questions on the fly</span></label>
+        <label class="opt"><input type="checkbox" name="AI_First_Tasks" value="Daily log from voice memo" /><span class="opt-label">Turn a 60-second voice memo into a clean daily log</span></label>
+        <label class="opt"><input type="checkbox" name="AI_First_Tasks" value="Walk through my week" /><span class="opt-label">Walk me through what's on my plate this week</span></label>
+        <label class="opt"><input type="checkbox" name="AI_First_Tasks" value="Find vendor prices" /><span class="opt-label">Look up supplier hours and material prices</span></label>
+        <label class="opt"><input type="checkbox" name="AI_First_Tasks" value="Create social posts" /><span class="opt-label">Help me write Instagram captions for past projects</span></label>
+        <label class="opt"><input type="checkbox" name="AI_First_Tasks" value="Other" /><span class="opt-label">Something else</span></label>
+      </div>
+    </fieldset>
+
+    <!-- Q8: Call time -->
+    <fieldset>
+      <legend>8. When's a good time for a 30-min call with Joe?</legend>
+      <p class="q-hint">Pick the slot that works. Joe will confirm by text.</p>
+      <div class="opt-list">
+        <label class="opt"><input type="radio" name="Call_Time" value="Weekday morning" required /><span class="opt-label">Weekday morning (7&ndash;9am)</span></label>
+        <label class="opt"><input type="radio" name="Call_Time" value="Weekday lunch" /><span class="opt-label">Weekday lunch (11am&ndash;1pm)</span></label>
+        <label class="opt"><input type="radio" name="Call_Time" value="Weekday evening" /><span class="opt-label">Weekday evening (5&ndash;7pm)</span></label>
+        <label class="opt"><input type="radio" name="Call_Time" value="Saturday morning" /><span class="opt-label">Saturday morning</span></label>
+        <label class="opt"><input type="radio" name="Call_Time" value="Sunday" /><span class="opt-label">Sunday</span></label>
+      </div>
+    </fieldset>
+
+    <!-- Q9: Anything else -->
+    <fieldset>
+      <legend>9. Anything else Joe should know?</legend>
+      <p class="q-hint">Optional. Skip if nothing.</p>
+      <textarea name="Anything_Else" placeholder="Tech comfort level, past AI experience, anything you want him to know going in..."></textarea>
+    </fieldset>
+
+    <button type="submit" class="submit">Send to Joe &rarr;</button>
+
+    <p class="footer-note">Lands in Joe's inbox in &lt; 1 minute. He'll text you to confirm a time.</p>
+
+  </form>
+
+</body>
+</html>
